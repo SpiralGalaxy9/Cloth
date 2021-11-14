@@ -31,5 +31,12 @@ namespace Cloth
         {
             Application.Exit();
         }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            frmManufactures fm = new frmManufactures();
+            fm.MdiParent = frmMain.ActiveForm;
+            fm.Show();
+        }
     }
 }

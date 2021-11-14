@@ -4,40 +4,100 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using System.Data;
-using System.Data.SqlClient;
+using System.Windows.Forms;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 
 namespace Cloth
 {
     class ManageDB
     {
-        static string conString;
+        //local Connection String for Sanaullah
+        static string conString = @"server=localhost; database=cloth; user id=root";
 
-        //local string for Sanaullah
+        //local Connection String for Babar
         //conString = @"Data Source = CVALLEY\SQLEXPRESS; Initial Catalog =ML_IMS ; Integrated Security = True";
 
-        //local string for Babar
+        //local Connection String for Kashif
         //conString = @"Data Source = CVALLEY\SQLEXPRESS; Initial Catalog =ML_IMS ; Integrated Security = True";
 
-        //local string for Kashif
-        //conString = @"Data Source = CVALLEY\SQLEXPRESS; Initial Catalog =ML_IMS ; Integrated Security = True";
-
-
-        //Online String
+        //Online/Networking Connection String for SQL ---- need to set according to MySQL format
         //static string conString = @"Server=192.168.18.2,1433;Network Library=DBMSSOCN;Initial Catalog=SAMILMS;User ID=operator;Password=operator786@";
+        
+        //MySql Connection 
+        MySqlConnection con = new MySqlConnection(conString);
+
+        //MySql command 
+        MySqlCommand sqlComObj;
+
+        // MySQL Reader 
+        MySqlDataReader sqlDataRdrObj;
+
+        // MySQL Data Adapter
+        MySqlDataAdapter sqlDataAdptObj = new MySqlDataAdapter();
 
 
-        SqlConnection con = new SqlConnection(conString);
-        // sql command 
-        SqlCommand sqlComObj = new SqlCommand();
-        // sql reader and adapter
-        //SqlDataReader sqlDataRdrObj;
-        SqlDataAdapter sqlDataAdptObj = new SqlDataAdapter();
+        // *****************************  Manufacturer Related Queries   *********************************
 
+
+
+        // *****************************  SOME CODES FOR EASY REFERENCES *********************************
 
         /*
-         public DataSet getDailySummary(DateTime fDate, DateTime tDate)
+
+        public void Registration(BloodBank donor)
+        {
+            string query = "Insert Into bloodbank(id, name) Values('"+ donor.id +"','"+ donor.name +"')";
+
+            MySqlConnection conn = new MySqlConnection();
+            conn.ConnectionString = ConnectionString;
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = query;
+            cmd.Connection = conn;
+
+            int result = cmd.ExecuteNonQuery();
+            if (result == '1')
+            {
+                Console.WriteLine("Registration Successful...");
+            }
+        }
+        public void SearchByname(string name)
+        {
+            string query = "select * from bloodbank Where name = '"+ name +"'";
+            try
+            {
+                MySqlConnection conn = new MySqlConnection();
+                conn.ConnectionString = ConnectionString;
+                conn.Open();
+
+                MySqlDataReader rdr = null;
+
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.CommandText = query;
+                cmd.Connection = conn;
+
+                rdr = cmd.ExecuteReader();
+
+                while(rdr.Read())
+                {
+                    Console.WriteLine("ID: ", rdr["id"].ToString());
+                    Console.WriteLine("Name: ", rdr["name"].ToString());
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        *******************  Codes from Sami Lab Project    ****************************
+
+    
+        public DataSet getDailySummary(DateTime fDate, DateTime tDate)
         {
             //DataSset Container
             DataSet dsDailySummary = new DataSet();
@@ -178,5 +238,9 @@ namespace Cloth
         }
 
          * */
+
+
+
+
     }
 }
