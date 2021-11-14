@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using System.Windows.Forms;
+
+using System.Data;
+//using System.Data.SqlClient;
+
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
@@ -39,6 +42,74 @@ namespace Cloth
 
 
         // *****************************  Manufacturer Related Queries   *********************************
+
+        
+        public DataSet GetManufacturersDetails()
+        {
+            DataSet datasetManufacturers = new DataSet();
+
+            string query = "SELECT * FROM Manufacturers order by ManufacturerName";
+
+            sqlComObj = new MySqlCommand(query, con); // sql command           
+            sqlDataAdptObj.SelectCommand = sqlComObj;
+            datasetManufacturers.Clear();
+            sqlDataAdptObj.Fill(datasetManufacturers, "ManufactureresDetails"); // fill dataset
+
+            return datasetManufacturers;
+        }
+
+        
+        public int AddManufacturerDetails(string code, string name, string city, string location, string contactPerson, string cell, string phone, string description)
+        {
+            con.Open();
+            // sql command to add ManufacturerDetails
+            string query = "insert into Manufacturers(ManufacturerCode, ManufacturerName, ManufacturerCity, ManufacturerLocation, ManufacturerContactPerson, ManufacturerCell, ManufacturerPhone, ManufacturerDescription)";
+            query += "values(@ManufacturerCode, @ManufacturerName, @ManufacturerCity, @ManufacturerLocation ,@ManufacturerContactPerson, @ManufacturerCell, @ManufacturerPhone, @ManufacturerDescription)";
+            using (sqlComObj = new MySqlCommand(query, con))
+            {
+                // adding parameters
+
+                sqlComObj.Parameters.AddWithValue("@ManufacturerCode", code);
+                sqlComObj.Parameters.AddWithValue("@ManufacturerName", name);
+                sqlComObj.Parameters.AddWithValue("@ManufacturerCity", city);
+                sqlComObj.Parameters.AddWithValue("@ManufacturerLocation", location);
+                sqlComObj.Parameters.AddWithValue("@ManufacturerContactPerson", contactPerson);
+                sqlComObj.Parameters.AddWithValue("@ManufacturerCell", cell);
+                sqlComObj.Parameters.AddWithValue("@ManufacturerPhone", phone);
+                sqlComObj.Parameters.AddWithValue("@ManufacturerDescription", description);
+                sqlComObj.ExecuteNonQuery();
+
+            }
+            //getting the last inserted record, MID
+
+            int lid = Int32.Parse(sqlComObj.LastInsertedId.ToString());
+            return lid;
+        }
+
+
+        public void UpdateManufacturerDetails(int mid, string code, string name, string city, string location, string contactPerson, string cell, string phone, string description)
+        {
+
+            con.Open();
+            string query = "update Manufacturers set ManufacturerCode=@ManufacturerCode, ManufacturerName=@ManufacturerName, ManufacturerCity=@ManufacturerCity, ManufacturerLocation=@ManufacturerLocation,";
+            query += "ManufacturerContactPerson =@ManufacturerContactPerson, ManufacturerCell=@ManufacturerCell, ManufacturerPhone=@ManufacturerPhone, ManufacturerDescription=@ManufacturerDescription where MID=@MID";
+
+            using (sqlComObj = new MySqlCommand(query , con))
+            {
+                // adding parameters
+                sqlComObj.Parameters.AddWithValue("@MID", mid);
+                sqlComObj.Parameters.AddWithValue("@ManufacturerCode", code);
+                sqlComObj.Parameters.AddWithValue("@ManufacturerName", name);
+                sqlComObj.Parameters.AddWithValue("@ManufacturerCity", city);
+                sqlComObj.Parameters.AddWithValue("@ManufacturerLocation", location);
+                sqlComObj.Parameters.AddWithValue("@ManufacturerContactPerson", contactPerson);
+                sqlComObj.Parameters.AddWithValue("@ManufacturerCell", cell);
+                sqlComObj.Parameters.AddWithValue("@ManufacturerPhone", phone);
+                sqlComObj.Parameters.AddWithValue("@ManufacturerDescription", description);
+                sqlComObj.ExecuteNonQuery();
+            }
+            con.Close();
+        }
 
 
 
@@ -238,9 +309,5 @@ namespace Cloth
         }
 
          * */
-
-
-
-
     }
 }

@@ -298,6 +298,7 @@
             this.btnSearch.TabIndex = 126;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
             // gbManufacturers
             // 
@@ -306,7 +307,7 @@
             this.gbManufacturers.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbManufacturers.Location = new System.Drawing.Point(12, 415);
             this.gbManufacturers.Name = "gbManufacturers";
-            this.gbManufacturers.Size = new System.Drawing.Size(829, 234);
+            this.gbManufacturers.Size = new System.Drawing.Size(1333, 234);
             this.gbManufacturers.TabIndex = 127;
             this.gbManufacturers.TabStop = false;
             this.gbManufacturers.Text = "Manufactureres";
@@ -316,8 +317,9 @@
             this.dgManufactureres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgManufactureres.Location = new System.Drawing.Point(7, 29);
             this.dgManufactureres.Name = "dgManufactureres";
-            this.dgManufactureres.Size = new System.Drawing.Size(804, 192);
+            this.dgManufactureres.Size = new System.Drawing.Size(1320, 192);
             this.dgManufactureres.TabIndex = 0;
+            this.dgManufactureres.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgManufactureres_CellContentClick);
             // 
             // pbManufacturers
             // 
