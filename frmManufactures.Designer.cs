@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtCity = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.Label();
@@ -68,7 +68,7 @@
             this.txtCity.Location = new System.Drawing.Point(133, 138);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(281, 31);
-            this.txtCity.TabIndex = 109;
+            this.txtCity.TabIndex = 3;
             // 
             // btnClose
             // 
@@ -134,7 +134,7 @@
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtLocation.Size = new System.Drawing.Size(283, 76);
-            this.txtLocation.TabIndex = 111;
+            this.txtLocation.TabIndex = 4;
             // 
             // txtCode
             // 
@@ -143,7 +143,7 @@
             this.txtCode.MaxLength = 2;
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(67, 31);
-            this.txtCode.TabIndex = 110;
+            this.txtCode.TabIndex = 1;
             // 
             // txtName
             // 
@@ -151,7 +151,7 @@
             this.txtName.Location = new System.Drawing.Point(133, 98);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(281, 31);
-            this.txtName.TabIndex = 108;
+            this.txtName.TabIndex = 2;
             // 
             // label12
             // 
@@ -212,7 +212,7 @@
             this.txtContactPerson.Location = new System.Drawing.Point(133, 181);
             this.txtContactPerson.Name = "txtContactPerson";
             this.txtContactPerson.Size = new System.Drawing.Size(281, 31);
-            this.txtContactPerson.TabIndex = 118;
+            this.txtContactPerson.TabIndex = 5;
             // 
             // label4
             // 
@@ -240,7 +240,7 @@
             this.txtCell.Location = new System.Drawing.Point(133, 225);
             this.txtCell.Name = "txtCell";
             this.txtCell.Size = new System.Drawing.Size(281, 31);
-            this.txtCell.TabIndex = 121;
+            this.txtCell.TabIndex = 6;
             // 
             // label6
             // 
@@ -258,7 +258,7 @@
             this.txtPhone.Location = new System.Drawing.Point(520, 225);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(281, 31);
-            this.txtPhone.TabIndex = 123;
+            this.txtPhone.TabIndex = 7;
             // 
             // label7
             // 
@@ -288,7 +288,7 @@
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtDescription.Size = new System.Drawing.Size(672, 53);
-            this.txtDescription.TabIndex = 125;
+            this.txtDescription.TabIndex = 8;
             // 
             // btnSearch
             // 
@@ -319,8 +319,8 @@
             this.dgManufactureres.AllowUserToAddRows = false;
             this.dgManufactureres.AllowUserToDeleteRows = false;
             this.dgManufactureres.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgManufactureres.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgManufactureres.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgManufactureres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgManufactureres.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgManufactureres.Location = new System.Drawing.Point(7, 29);

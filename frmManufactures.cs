@@ -25,16 +25,20 @@ namespace Cloth
 
         private void FrmManufactures_Load(object sender, EventArgs e)
         {
-            FillGrid_init();
-            dgManufactureres.AutoGenerateColumns = false;
-            CleanForm();
-        }
+            Grid_init();
 
-        private void FillGrid_init()
-        {
             dsManufacturers.Clear();
             dsManufacturers = managerDB.GetManufacturersDetails();
 
+            FillGrid(dsManufacturers);
+
+            CleanForm();
+        }
+
+
+
+        private void Grid_init()
+        {
             dgManufactureres.ColumnCount = 9;
 
             dgManufactureres.Columns[0].HeaderText = "MID";
@@ -52,27 +56,8 @@ namespace Cloth
             {
                 dgManufactureres.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
-
-
-            for (int i = 0; i < dsManufacturers.Tables["ManufactureresDetails"].Rows.Count; i++)
-            {
-                DataGridViewRow row = dgManufactureres.Rows[dgManufactureres.Rows.Add()];
-
-                row.Cells[0].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["MID"].ToString().Trim();
-                row.Cells[1].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerCode"].ToString().Trim();
-                row.Cells[2].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerName"].ToString().Trim();
-
-                row.Cells[3].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerCity"].ToString().Trim();
-                row.Cells[4].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerLocation"].ToString().Trim();
-
-                row.Cells[5].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerContactPerson"].ToString().Trim();
-                row.Cells[6].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerCell"].ToString().Trim();
-                row.Cells[7].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerPhone"].ToString().Trim();
-
-                row.Cells[8].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerDescription"].ToString().Trim();
-                
-            }
-
+            dgManufactureres.AutoGenerateColumns = false;
+            
             DataGridViewLinkColumn Editlink = new DataGridViewLinkColumn();
             Editlink.UseColumnTextForLinkValue = true;
             Editlink.HeaderText = "Edit";
@@ -94,33 +79,28 @@ namespace Cloth
             dgManufactureres.Columns[8].Visible = false;
         }
 
-        private void FillGrid()
+        private void FillGrid(DataSet ds)
         {
-            dgManufactureres.Rows.Clear();
+            dgManufactureres.Rows.Clear();           
 
-            dsManufacturers.Clear();
-            dsManufacturers = managerDB.GetManufacturersDetails();
-
-            for (int i = 0; i < dsManufacturers.Tables["ManufactureresDetails"].Rows.Count; i++)
+            for (int i = 0; i < ds.Tables["ManufactureresDetails"].Rows.Count; i++)
             {
                 DataGridViewRow row = dgManufactureres.Rows[dgManufactureres.Rows.Add()];
 
-                row.Cells[0].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["MID"].ToString().Trim();
-                row.Cells[1].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerCode"].ToString().Trim();
-                row.Cells[2].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerName"].ToString().Trim();
+                row.Cells[0].Value = ds.Tables["ManufactureresDetails"].Rows[i]["MID"].ToString().Trim();
+                row.Cells[1].Value = ds.Tables["ManufactureresDetails"].Rows[i]["ManufacturerCode"].ToString().Trim();
+                row.Cells[2].Value = ds.Tables["ManufactureresDetails"].Rows[i]["ManufacturerName"].ToString().Trim();
 
-                row.Cells[3].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerCity"].ToString().Trim();
-                row.Cells[4].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerLocation"].ToString().Trim();
+                row.Cells[3].Value = ds.Tables["ManufactureresDetails"].Rows[i]["ManufacturerCity"].ToString().Trim();
+                row.Cells[4].Value = ds.Tables["ManufactureresDetails"].Rows[i]["ManufacturerLocation"].ToString().Trim();
 
-                row.Cells[5].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerContactPerson"].ToString().Trim();
-                row.Cells[6].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerCell"].ToString().Trim();
-                row.Cells[7].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerPhone"].ToString().Trim();
+                row.Cells[5].Value = ds.Tables["ManufactureresDetails"].Rows[i]["ManufacturerContactPerson"].ToString().Trim();
+                row.Cells[6].Value = ds.Tables["ManufactureresDetails"].Rows[i]["ManufacturerCell"].ToString().Trim();
+                row.Cells[7].Value = ds.Tables["ManufactureresDetails"].Rows[i]["ManufacturerPhone"].ToString().Trim();
 
-                row.Cells[8].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerDescription"].ToString().Trim();
-                
+                row.Cells[8].Value = ds.Tables["ManufactureresDetails"].Rows[i]["ManufacturerDescription"].ToString().Trim();                
             }
             dgManufactureres.Refresh();
-
         }
         private void CleanForm()
         {
@@ -131,7 +111,11 @@ namespace Cloth
                     ((TextBox)c).Text = String.Empty;
                 }
             }
-            FillGrid();
+
+            dsManufacturers.Clear();
+            dsManufacturers = managerDB.GetManufacturersDetails();
+
+            FillGrid(dsManufacturers);
 
             txtCode.Focus();
         }
@@ -159,8 +143,6 @@ namespace Cloth
 
             if (ConfirmConcestency() == true)
             {
-
-
                 code = txtCode.Text.Trim();
                 name = txtName.Text.Trim();
                 city = txtCity.Text.Trim();
@@ -168,33 +150,43 @@ namespace Cloth
                 contactPerson = txtContactPerson.Text.Trim();
                 cell = txtCell.Text.Trim();
                 phone = txtPhone.Text.Trim();
-                description = txtDescription.Text.Trim();
-
-               
+                description = txtDescription.Text.Trim();               
 
                 if (txtManufacturerID.TextLength == 0)
-                {
-                    int lid =managerDB.AddManufacturerDetails(code, name, city, location, contactPerson, cell, phone, description);
-                    if (lid > 0)
+                {                     
+                    try
                     {
-                        MessageBox.Show("New Manufacturer is Added at " + lid.ToString());
+                        int lid = managerDB.AddManufacturerDetails(code, name, city, location, contactPerson, cell, phone, description);
+                        if (lid > 0)
+                        {
+                            MessageBox.Show("New Manufacturer is Added at " + lid.ToString());
+                        }
+                        else
+                        {
+                            MessageBox.Show("Not Added, Contact with your Administrator --- " + lid.ToString());
+                        }
+                        CleanForm();
                     }
-                    else
+                    catch
                     {
-                        MessageBox.Show("Not Added, Contact with your Administrator --- " + lid.ToString());
+                        MessageBox.Show("Can't Add, as Manaufacturer with Same CODE or NAME is already exits, please choose different");
+                        txtCode.Focus();
                     }
                 }
                 else
                 {
-                    mid = Int32.Parse(txtManufacturerID.Text.Trim());                   
-                    managerDB.UpdateManufacturerDetails(mid, code, name, city, location, contactPerson, cell, phone, description);
-
+                    try
+                    {
+                        mid = Int32.Parse(txtManufacturerID.Text.Trim());
+                        managerDB.UpdateManufacturerDetails(mid, code, name, city, location, contactPerson, cell, phone, description);
+                        CleanForm();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Can't Modify, as Manaufacturer with Same CODE or NAME is already exits, please choose different");
+                        txtCode.Focus();
+                    }
                 }
-                //MessageBox.Show(string.Format("checking values of textboxes uid:{0}, did:{1}", txtUID.Text, txtDID.Text));
-
-                //clear all fields and fill the grid again with new values
-                CleanForm();
-                FillGrid();
             }
             else
             {
@@ -239,33 +231,24 @@ namespace Cloth
                 txtPhone.Text = row.Cells[7].Value.ToString().Trim();
 
                 txtDescription.Text = row.Cells[8].Value.ToString().Trim();
-
             }
             else if (e.ColumnIndex == 10) //delete link 
             {
                 DataGridViewRow row = dgManufactureres.Rows[e.RowIndex];
                 if (row.Cells[10].Value != null)
                 {
-                    DialogResult result = MessageBox.Show("Are you sure you want to delete ?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult result = MessageBox.Show("Are you sure you want to delete ?", "ALERT", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
                         managerDB.DeleteManufacturersDetails(Int32.Parse(row.Cells[0].Value.ToString()));
                     }
                 }
                 CleanForm();
-            }
-            
+            }            
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
-            FillGridbySearch();
-        }
-
-        private void FillGridbySearch()
-        {
-            dgManufactureres.Rows.Clear();
-
             dsManufacturers.Clear();
             dsManufacturers = managerDB.SearchManufactureresDetails(txtName.Text.Trim());
 
@@ -277,29 +260,10 @@ namespace Cloth
                 txtName.Focus();
                 return;
             }
-
-            for (int i = 0; i < dsManufacturers.Tables["ManufactureresDetails"].Rows.Count; i++)
+            else
             {
-                DataGridViewRow row = dgManufactureres.Rows[dgManufactureres.Rows.Add()];
-
-                row.Cells[0].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["MID"].ToString().Trim();
-                row.Cells[1].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerCode"].ToString().Trim();
-                row.Cells[2].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerName"].ToString().Trim();
-
-                row.Cells[3].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerCity"].ToString().Trim();
-                row.Cells[4].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerLocation"].ToString().Trim();
-
-                row.Cells[5].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerContactPerson"].ToString().Trim();
-                row.Cells[6].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerCell"].ToString().Trim();
-                row.Cells[7].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerPhone"].ToString().Trim();
-
-                row.Cells[8].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerDescription"].ToString().Trim();
-
+                FillGrid(dsManufacturers);
             }
-            dgManufactureres.Refresh();
-
-
-        }
-
+        }        
     }
 }
