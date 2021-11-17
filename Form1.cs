@@ -50,7 +50,7 @@ namespace Cloth
             Application.Exit();
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        private void btnFormManufacturer_Click(object sender, EventArgs e)
         {
             // runs only one instance of form
             if (!CheckForDuplicate(fm))

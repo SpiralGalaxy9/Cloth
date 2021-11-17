@@ -34,7 +34,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsBtnLogin = new System.Windows.Forms.ToolStripButton();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnFormManufacturer = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -84,22 +84,22 @@
             this.button1.Text = "Testing";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnFormManufacturer
             // 
-            this.button2.Location = new System.Drawing.Point(414, 27);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(153, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Add Manufacturers";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            this.btnFormManufacturer.Location = new System.Drawing.Point(414, 27);
+            this.btnFormManufacturer.Name = "btnFormManufacturer";
+            this.btnFormManufacturer.Size = new System.Drawing.Size(153, 23);
+            this.btnFormManufacturer.TabIndex = 6;
+            this.btnFormManufacturer.Text = "Add Manufacturers";
+            this.btnFormManufacturer.UseVisualStyleBackColor = true;
+            this.btnFormManufacturer.Click += new System.EventHandler(this.btnFormManufacturer_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnFormManufacturer);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -126,7 +126,7 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsBtnLogin;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnFormManufacturer;
     }
 }
 
