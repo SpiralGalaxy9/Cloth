@@ -221,12 +221,85 @@ namespace Cloth
 
         private void DgManufactureres_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            // MessageBox.Show(string.Format("Edit -- CellClick row:{0}, column:{1}", e.RowIndex, e.ColumnIndex));
 
+            if (e.ColumnIndex == 9) //Edit link 
+            {
+                DataGridViewRow row = dgManufactureres.Rows[e.RowIndex];
+
+                txtManufacturerID.Text = row.Cells[0].Value.ToString();
+                txtCode.Text = row.Cells[1].Value.ToString();
+                txtName.Text = row.Cells[2].Value.ToString();
+
+                txtCity.Text = row.Cells[3].Value.ToString();   
+                txtLocation.Text = row.Cells[4].Value.ToString().Trim();
+
+                txtContactPerson.Text = row.Cells[5].Value.ToString().Trim();
+                txtCell.Text = row.Cells[6].Value.ToString().Trim();
+                txtPhone.Text = row.Cells[7].Value.ToString().Trim();
+
+                txtDescription.Text = row.Cells[8].Value.ToString().Trim();
+
+            }
+            else if (e.ColumnIndex == 10) //delete link 
+            {
+                DataGridViewRow row = dgManufactureres.Rows[e.RowIndex];
+                if (row.Cells[10].Value != null)
+                {
+                    DialogResult result = MessageBox.Show("Are you sure you want to delete ?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        managerDB.DeleteManufacturersDetails(Int32.Parse(row.Cells[0].Value.ToString()));
+                    }
+                }
+                CleanForm();
+            }
+            
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
+            FillGridbySearch();
+        }
+
+        private void FillGridbySearch()
+        {
+            dgManufactureres.Rows.Clear();
+
+            dsManufacturers.Clear();
+            dsManufacturers = managerDB.SearchManufactureresDetails(txtName.Text.Trim());
+
+            //MessageBox.Show(txtName.Text.Trim() + "have " + dsManufacturers.Tables["ManufactureresDetails"].Rows.Count +"records");
+
+            if (dsManufacturers.Tables["ManufactureresDetails"].Rows.Count == 0)
+            {
+                MessageBox.Show("No Record found with the given Name of Manufacturer");
+                txtName.Focus();
+                return;
+            }
+
+            for (int i = 0; i < dsManufacturers.Tables["ManufactureresDetails"].Rows.Count; i++)
+            {
+                DataGridViewRow row = dgManufactureres.Rows[dgManufactureres.Rows.Add()];
+
+                row.Cells[0].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["MID"].ToString().Trim();
+                row.Cells[1].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerCode"].ToString().Trim();
+                row.Cells[2].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerName"].ToString().Trim();
+
+                row.Cells[3].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerCity"].ToString().Trim();
+                row.Cells[4].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerLocation"].ToString().Trim();
+
+                row.Cells[5].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerContactPerson"].ToString().Trim();
+                row.Cells[6].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerCell"].ToString().Trim();
+                row.Cells[7].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerPhone"].ToString().Trim();
+
+                row.Cells[8].Value = dsManufacturers.Tables["ManufactureresDetails"].Rows[i]["ManufacturerDescription"].ToString().Trim();
+
+            }
+            dgManufactureres.Refresh();
+
 
         }
+
     }
 }

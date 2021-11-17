@@ -58,7 +58,23 @@ namespace Cloth
             return datasetManufacturers;
         }
 
-        
+        public DataSet SearchManufactureresDetails(string SearchValue)
+        {
+            DataSet datasetManufacturers = new DataSet();
+
+            string query = "SELECT * FROM Manufacturers ";
+            query += " where ManufacturerName Like @SearchValue Order By  ManufacturerName";
+
+
+            sqlComObj = new MySqlCommand(query, con); // sql command      
+            sqlComObj.Parameters.AddWithValue("@SearchValue", "%" + SearchValue + "%");
+            sqlDataAdptObj.SelectCommand = sqlComObj;
+            datasetManufacturers.Clear();
+            sqlDataAdptObj.Fill(datasetManufacturers, "ManufactureresDetails"); // fill dataset
+
+            return datasetManufacturers;
+        }
+
         public int AddManufacturerDetails(string code, string name, string city, string location, string contactPerson, string cell, string phone, string description)
         {
             con.Open();
@@ -111,6 +127,20 @@ namespace Cloth
             con.Close();
         }
 
+        public void DeleteManufacturersDetails(int mid)
+        {
+            con.Open();
+            string query = "delete from Manufacturers where MID=@MID";
+
+
+            using (sqlComObj = new MySqlCommand(query, con))
+            {
+                //adding parameters
+                sqlComObj.Parameters.AddWithValue("@MID", mid);
+                sqlComObj.ExecuteNonQuery();
+            }
+            con.Close();
+        }
 
 
         // *****************************  SOME CODES FOR EASY REFERENCES *********************************

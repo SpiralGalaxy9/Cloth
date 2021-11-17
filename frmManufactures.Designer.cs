@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtCity = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.Label();
@@ -55,6 +56,7 @@
             this.gbManufacturers = new System.Windows.Forms.GroupBox();
             this.dgManufactureres = new System.Windows.Forms.DataGridView();
             this.pbManufacturers = new System.Windows.Forms.PictureBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.gbManufacturers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgManufactureres)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbManufacturers)).BeginInit();
@@ -314,7 +316,13 @@
             // 
             // dgManufactureres
             // 
+            this.dgManufactureres.AllowUserToAddRows = false;
+            this.dgManufactureres.AllowUserToDeleteRows = false;
+            this.dgManufactureres.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgManufactureres.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgManufactureres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgManufactureres.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgManufactureres.Location = new System.Drawing.Point(7, 29);
             this.dgManufactureres.Name = "dgManufactureres";
             this.dgManufactureres.Size = new System.Drawing.Size(1320, 192);
@@ -335,11 +343,23 @@
             this.pbManufacturers.TabIndex = 128;
             this.pbManufacturers.TabStop = false;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label10.Location = new System.Drawing.Point(310, 396);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(129, 16);
+            this.label10.TabIndex = 129;
+            this.label10.Text = "*Search by Name";
+            // 
             // frmManufactures
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1357, 656);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.pbManufacturers);
             this.Controls.Add(this.gbManufacturers);
             this.Controls.Add(this.btnSearch);
@@ -408,5 +428,6 @@
         private System.Windows.Forms.GroupBox gbManufacturers;
         private System.Windows.Forms.DataGridView dgManufactureres;
         private System.Windows.Forms.PictureBox pbManufacturers;
+        private System.Windows.Forms.Label label10;
     }
 }
