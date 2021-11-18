@@ -122,14 +122,15 @@ namespace Cloth
 
         private bool ConfirmConcestency()
         {
+            // MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning)
             if (txtCode.TextLength != 2)
             {
-                MessageBox.Show("Code should be of Two Characters");
+                MessageBox.Show("Code should be of Two Characters", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return false;
             }
             else if (txtName.TextLength == 0)
             {
-                MessageBox.Show("Name should not be empty");
+                MessageBox.Show("Name should not be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }           
             else
@@ -159,17 +160,18 @@ namespace Cloth
                         int lid = managerDB.AddManufacturerDetails(code, name, city, location, contactPerson, cell, phone, description);
                         if (lid > 0)
                         {
-                            MessageBox.Show("New Manufacturer is Added at " + lid.ToString());
+                            
+                            MessageBox.Show("New Manufacturer is Added at " + lid.ToString(), "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
-                            MessageBox.Show("Not Added, Contact with your Administrator --- " + lid.ToString());
+                            MessageBox.Show("Not Added, Contact with your Administrator --- " + lid.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         CleanForm();
                     }
                     catch
                     {
-                        MessageBox.Show("Can't Add, as Manaufacturer with Same CODE or NAME is already exits, please choose different");
+                        MessageBox.Show("Can't Add, as Manaufacturer with Same CODE or NAME is already exits, please choose different","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         txtCode.Focus();
                     }
                 }
@@ -183,14 +185,14 @@ namespace Cloth
                     }
                     catch
                     {
-                        MessageBox.Show("Can't Modify, as Manaufacturer with Same CODE or NAME is already exits, please choose different");
+                        MessageBox.Show("Can't Modify, as Manaufacturer with Same CODE or NAME is already exits, please choose different", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         txtCode.Focus();
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Enter Correct Values");
+                MessageBox.Show("Enter Correct Values", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -201,14 +203,17 @@ namespace Cloth
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
-            foreach (Form f in Application.OpenForms)
-            {
-                if (f is frmManufactures)
-                {
-                    f.Close();
-                    break;
-                }
-            }
+            // fix optimized version
+            this.Close();
+
+            //foreach (Form f in Application.OpenForms)
+           // {
+             //   if (f is frmManufactures)
+               // {
+                 //   f.Close();
+                 //   break;
+               // }
+           // }
         }
 
         private void DgManufactureres_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -256,7 +261,7 @@ namespace Cloth
 
             if (dsManufacturers.Tables["ManufactureresDetails"].Rows.Count == 0)
             {
-                MessageBox.Show("No Record found with the given Name of Manufacturer");
+                MessageBox.Show("No Record found with the given Name of Manufacturer","Info",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 txtName.Focus();
                 return;
             }

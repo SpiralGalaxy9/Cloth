@@ -137,6 +137,87 @@ namespace Cloth
             con.Close();
         }
 
+        // *****************************  Colors Form  Related Queries   *********************************
+        //  Get, Search, Add, Update, Delete
+
+        public DataSet GetColors()
+        {
+            DataSet dsColors = new DataSet();
+
+            string query = "SELECT * FROM Color order by ColorName";
+
+            sqlComObj = new MySqlCommand(query, con); // sql command           
+            sqlDataAdptObj.SelectCommand = sqlComObj;
+            dsColors.Clear();
+            sqlDataAdptObj.Fill(dsColors, "Colors"); // fill dataset
+
+            return dsColors;
+        }
+        public DataSet SearchColor(string SearchValue)
+        {
+            DataSet dsColors = new DataSet();
+
+            string query = "SELECT * FROM Color ";
+            query += " where ColorName Like @SearchValue Order By  ColorName";
+
+
+            sqlComObj = new MySqlCommand(query, con); // sql command      
+            sqlComObj.Parameters.AddWithValue("@SearchValue", "%" + SearchValue + "%");
+            sqlDataAdptObj.SelectCommand = sqlComObj;
+            dsColors.Clear();
+            sqlDataAdptObj.Fill(dsColors, "Colors"); // fill dataset
+
+            return dsColors;
+        }
+        public int AddColor(string colorCode, string colorName)
+        {
+            con.Open();
+            // sql command to add color
+            string query = "insert into Color(ColorCode, ColorName)";
+            query += " values(@ColorCode, @ColorName)";
+            using (sqlComObj = new MySqlCommand(query, con))
+            {
+                sqlComObj.Parameters.AddWithValue("@ColorCode", colorCode);
+                sqlComObj.Parameters.AddWithValue("@ColorName",colorName);
+                sqlComObj.ExecuteNonQuery();
+            }
+            //getting the last inserted record, ColorID
+            int lid = Int32.Parse(sqlComObj.LastInsertedId.ToString());
+            return lid;
+        }
+
+        public void UpdateColor(int colorId,string colorCode, string colorName)
+        {
+
+            con.Open();
+            string query = "update Color set ColorCode=@ColorCode, ColorName=@ColorName ";
+            query += "where ColorID=@ColorID";
+
+            using (sqlComObj = new MySqlCommand(query, con))
+            {
+                // adding parameters
+                sqlComObj.Parameters.AddWithValue("@ColorID", colorId);
+                sqlComObj.Parameters.AddWithValue("@ColorCode", colorCode);
+                sqlComObj.Parameters.AddWithValue("@ColorName", colorName);
+                sqlComObj.ExecuteNonQuery();
+            }
+            con.Close();
+        }
+
+        public void DeleteColor(int colorID)
+        {
+            con.Open();
+            string query = "delete from Color where ColorID=@ColorID";
+
+
+            using (sqlComObj = new MySqlCommand(query, con))
+            {
+                //adding parameters
+                sqlComObj.Parameters.AddWithValue("@ColorID", colorID);
+                sqlComObj.ExecuteNonQuery();
+            }
+            con.Close();
+        }
 
         // *****************************  SOME CODES FOR EASY REFERENCES *********************************
 

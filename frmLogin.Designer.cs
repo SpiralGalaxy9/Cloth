@@ -33,54 +33,77 @@
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(66, 56);
+            this.lblUsername.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.Location = new System.Drawing.Point(28, 65);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(61, 13);
+            this.lblUsername.Size = new System.Drawing.Size(91, 23);
             this.lblUsername.TabIndex = 0;
-            this.lblUsername.Text = "Username: ";
+            this.lblUsername.Text = "Username";
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(66, 123);
+            this.lblPassword.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.Location = new System.Drawing.Point(28, 116);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(53, 13);
+            this.lblPassword.Size = new System.Drawing.Size(86, 23);
             this.lblPassword.TabIndex = 1;
             this.lblPassword.Text = "Password";
             // 
             // tbUsername
             // 
-            this.tbUsername.Location = new System.Drawing.Point(134, 56);
+            this.tbUsername.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbUsername.Location = new System.Drawing.Point(126, 65);
+            this.tbUsername.Multiline = true;
             this.tbUsername.Name = "tbUsername";
-            this.tbUsername.Size = new System.Drawing.Size(244, 20);
+            this.tbUsername.Size = new System.Drawing.Size(281, 31);
             this.tbUsername.TabIndex = 2;
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(134, 115);
+            this.tbPassword.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPassword.Location = new System.Drawing.Point(126, 116);
+            this.tbPassword.Multiline = true;
             this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(244, 20);
+            this.tbPassword.PasswordChar = '*';
+            this.tbPassword.Size = new System.Drawing.Size(281, 31);
             this.tbPassword.TabIndex = 3;
+            this.tbPassword.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(303, 161);
+            this.btnLogin.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Location = new System.Drawing.Point(321, 167);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(75, 23);
+            this.btnLogin.Size = new System.Drawing.Size(86, 32);
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label1.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(231, 29);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Login Into Application";
             // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(452, 235);
+            this.ClientSize = new System.Drawing.Size(420, 235);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.tbUsername);
@@ -105,5 +128,6 @@
         private System.Windows.Forms.TextBox tbUsername;
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Label label1;
     }
 }

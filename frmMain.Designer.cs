@@ -31,12 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsBtnLogin = new System.Windows.Forms.ToolStripButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnFormManufacturer = new System.Windows.Forms.Button();
+            this.tsSideToolbar = new System.Windows.Forms.ToolStrip();
+            this.tsBtnManufacturers = new System.Windows.Forms.ToolStripButton();
+            this.tsBtnColors = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.tsSideToolbar.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -55,53 +54,48 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // toolStrip1
+            // tsSideToolbar
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsBtnLogin});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
-            this.toolStrip1.TabIndex = 2;
-            this.toolStrip1.Text = "tsTools";
+            this.tsSideToolbar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tsSideToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsBtnManufacturers,
+            this.tsBtnColors});
+            this.tsSideToolbar.Location = new System.Drawing.Point(0, 24);
+            this.tsSideToolbar.Name = "tsSideToolbar";
+            this.tsSideToolbar.Size = new System.Drawing.Size(149, 426);
+            this.tsSideToolbar.TabIndex = 2;
+            this.tsSideToolbar.Text = "tsTools";
             // 
-            // tsBtnLogin
+            // tsBtnManufacturers
             // 
-            this.tsBtnLogin.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsBtnLogin.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnLogin.Image")));
-            this.tsBtnLogin.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBtnLogin.Name = "tsBtnLogin";
-            this.tsBtnLogin.Size = new System.Drawing.Size(41, 22);
-            this.tsBtnLogin.Text = "Login";
-            this.tsBtnLogin.Click += new System.EventHandler(this.TsBtnLogin_Click);
+            this.tsBtnManufacturers.CheckOnClick = true;
+            this.tsBtnManufacturers.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsBtnManufacturers.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnManufacturers.Image")));
+            this.tsBtnManufacturers.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnManufacturers.Name = "tsBtnManufacturers";
+            this.tsBtnManufacturers.Size = new System.Drawing.Size(146, 27);
+            this.tsBtnManufacturers.Text = "Manufacturers";
+            this.tsBtnManufacturers.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsBtnManufacturers.ToolTipText = "manage maufactureers record";
+            this.tsBtnManufacturers.Click += new System.EventHandler(this.tsBtnManufacturers_Click);
             // 
-            // button1
+            // tsBtnColors
             // 
-            this.button1.Location = new System.Drawing.Point(82, 27);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Testing";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // btnFormManufacturer
-            // 
-            this.btnFormManufacturer.Location = new System.Drawing.Point(414, 27);
-            this.btnFormManufacturer.Name = "btnFormManufacturer";
-            this.btnFormManufacturer.Size = new System.Drawing.Size(153, 23);
-            this.btnFormManufacturer.TabIndex = 6;
-            this.btnFormManufacturer.Text = "Add Manufacturers";
-            this.btnFormManufacturer.UseVisualStyleBackColor = true;
-            this.btnFormManufacturer.Click += new System.EventHandler(this.btnFormManufacturer_Click);
+            this.tsBtnColors.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsBtnColors.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnColors.Image")));
+            this.tsBtnColors.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnColors.Name = "tsBtnColors";
+            this.tsBtnColors.Size = new System.Drawing.Size(146, 27);
+            this.tsBtnColors.Text = "Colors";
+            this.tsBtnColors.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsBtnColors.Click += new System.EventHandler(this.tsBtnColors_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnFormManufacturer);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.tsSideToolbar);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -112,8 +106,8 @@
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.tsSideToolbar.ResumeLayout(false);
+            this.tsSideToolbar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,10 +117,9 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton tsBtnLogin;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnFormManufacturer;
+        private System.Windows.Forms.ToolStrip tsSideToolbar;
+        private System.Windows.Forms.ToolStripButton tsBtnManufacturers;
+        private System.Windows.Forms.ToolStripButton tsBtnColors;
     }
 }
 

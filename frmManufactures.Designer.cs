@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtCity = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.Label();
@@ -319,12 +319,14 @@
             this.dgManufactureres.AllowUserToAddRows = false;
             this.dgManufactureres.AllowUserToDeleteRows = false;
             this.dgManufactureres.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgManufactureres.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgManufactureres.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgManufactureres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgManufactureres.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgManufactureres.Location = new System.Drawing.Point(7, 29);
+            this.dgManufactureres.MultiSelect = false;
             this.dgManufactureres.Name = "dgManufactureres";
+            this.dgManufactureres.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgManufactureres.Size = new System.Drawing.Size(1320, 192);
             this.dgManufactureres.TabIndex = 0;
             this.dgManufactureres.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgManufactureres_CellContentClick);
