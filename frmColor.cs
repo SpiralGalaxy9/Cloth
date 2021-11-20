@@ -178,7 +178,7 @@ namespace Cloth
 
             if (dsColors.Tables["Colors"].Rows.Count == 0)
             {
-                MessageBox.Show("No Record found with the given Name of Manufacturer", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No Record found with the given Color Name", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tbColorName.Focus();
                 return;
             }
@@ -208,7 +208,7 @@ namespace Cloth
                     DialogResult result = MessageBox.Show("Are you sure you want to delete ?", "ALERT", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        managerDB.DeleteColor(int.Parse(tbColorID.Text));
+                        managerDB.DeleteColor(int.Parse(row.Cells[0].Value.ToString()));
                     }
                 }
                 CleanForm();

@@ -93,6 +93,7 @@ namespace Cloth
                 sqlComObj.Parameters.AddWithValue("@ManufacturerDescription", description);
                 sqlComObj.ExecuteNonQuery();
             }
+            con.Close();
             //getting the last inserted record, MID
             int lid = Int32.Parse(sqlComObj.LastInsertedId.ToString());
             return lid;
@@ -181,6 +182,7 @@ namespace Cloth
                 sqlComObj.Parameters.AddWithValue("@ColorName",colorName);
                 sqlComObj.ExecuteNonQuery();
             }
+            con.Close();
             //getting the last inserted record, ColorID
             int lid = Int32.Parse(sqlComObj.LastInsertedId.ToString());
             return lid;
@@ -214,6 +216,90 @@ namespace Cloth
             {
                 //adding parameters
                 sqlComObj.Parameters.AddWithValue("@ColorID", colorID);
+                sqlComObj.ExecuteNonQuery();
+            }
+            con.Close();
+        }
+
+
+
+
+        // *****************************  Sizes Form  Related Queries   *********************************
+        //  Get, Search, Add, Update, Delete
+
+        public DataSet GetSizes()
+        {
+            DataSet dsSizes = new DataSet();
+
+            string query = "SELECT * FROM Size";
+
+            sqlComObj = new MySqlCommand(query, con); // sql command           
+            sqlDataAdptObj.SelectCommand = sqlComObj;
+            dsSizes.Clear();
+            sqlDataAdptObj.Fill(dsSizes, "Sizes"); // fill dataset
+            return dsSizes;
+        }
+        public DataSet SearchSize(string SearchValue)
+        {
+            DataSet dsSizes = new DataSet();
+
+            string query = "SELECT * FROM Size ";
+            query += " where Size Like @SearchValue";
+
+
+            sqlComObj = new MySqlCommand(query, con); // sql command      
+            sqlComObj.Parameters.AddWithValue("@SearchValue", "%" + SearchValue + "%");
+            sqlDataAdptObj.SelectCommand = sqlComObj;
+            dsSizes.Clear();
+            sqlDataAdptObj.Fill(dsSizes, "Sizes"); // fill dataset
+
+            return dsSizes;
+        }
+        public int AddSize(string Size)
+        {
+            con.Open();
+            // sql command to add size
+            string query = "insert into Size(Size)";
+            query += " values(@Size)";
+            using (sqlComObj = new MySqlCommand(query, con))
+            {
+               
+                sqlComObj.Parameters.AddWithValue("@Size", Size);
+                sqlComObj.ExecuteNonQuery();
+            }
+            con.Close();
+            //getting the last inserted record, ColorID
+            int lid = Int32.Parse(sqlComObj.LastInsertedId.ToString());
+            return lid;
+        }
+
+        public void UpdateSize(int SizeId, string Size)
+        {
+
+            con.Open();
+            string query = "update Size set Size=@Size ";
+            query += "where SizeID=@SizeID";
+
+            using (sqlComObj = new MySqlCommand(query, con))
+            {
+                // adding parameters
+                sqlComObj.Parameters.AddWithValue("@Size", Size);
+                sqlComObj.Parameters.AddWithValue("@SizeID", SizeId);
+                sqlComObj.ExecuteNonQuery();
+            }
+            con.Close();
+        }
+
+        public void DeleteSize(int SizeId)
+        {
+            con.Open();
+            string query = "delete from Size where SizeID=@SizeID";
+
+
+            using (sqlComObj = new MySqlCommand(query, con))
+            {
+                //adding parameters
+                sqlComObj.Parameters.AddWithValue("@SizeID", SizeId);
                 sqlComObj.ExecuteNonQuery();
             }
             con.Close();

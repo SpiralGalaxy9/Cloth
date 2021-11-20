@@ -72,6 +72,12 @@
     <Compile Include="frmManufactures.Designer.cs">
       <DependentUpon>frmManufactures.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSize.Designer.cs">
+      <DependentUpon>frmSize.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManageDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmManufactures.resx">
       <DependentUpon>frmManufactures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSize.resx">
+      <DependentUpon>frmSize.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

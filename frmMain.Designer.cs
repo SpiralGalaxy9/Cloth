@@ -34,6 +34,7 @@
             this.tsSideToolbar = new System.Windows.Forms.ToolStrip();
             this.tsBtnManufacturers = new System.Windows.Forms.ToolStripButton();
             this.tsBtnColors = new System.Windows.Forms.ToolStripButton();
+            this.tsBtnSizes = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.tsSideToolbar.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +60,8 @@
             this.tsSideToolbar.Dock = System.Windows.Forms.DockStyle.Left;
             this.tsSideToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsBtnManufacturers,
-            this.tsBtnColors});
+            this.tsBtnColors,
+            this.tsBtnSizes});
             this.tsSideToolbar.Location = new System.Drawing.Point(0, 24);
             this.tsSideToolbar.Name = "tsSideToolbar";
             this.tsSideToolbar.Size = new System.Drawing.Size(149, 426);
@@ -89,6 +91,17 @@
             this.tsBtnColors.Text = "Colors";
             this.tsBtnColors.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.tsBtnColors.Click += new System.EventHandler(this.tsBtnColors_Click);
+            // 
+            // tsBtnSizes
+            // 
+            this.tsBtnSizes.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsBtnSizes.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnSizes.Image")));
+            this.tsBtnSizes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnSizes.Name = "tsBtnSizes";
+            this.tsBtnSizes.Size = new System.Drawing.Size(146, 27);
+            this.tsBtnSizes.Text = "Sizes";
+            this.tsBtnSizes.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsBtnSizes.Click += new System.EventHandler(this.tsBtnSizes_Click);
             // 
             // frmMain
             // 
@@ -120,6 +133,7 @@
         private System.Windows.Forms.ToolStrip tsSideToolbar;
         private System.Windows.Forms.ToolStripButton tsBtnManufacturers;
         private System.Windows.Forms.ToolStripButton tsBtnColors;
+        private System.Windows.Forms.ToolStripButton tsBtnSizes;
     }
 }
 

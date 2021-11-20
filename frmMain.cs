@@ -72,5 +72,17 @@ namespace Cloth
             }
 
         }
+
+        private void tsBtnSizes_Click(object sender, EventArgs e)
+        {
+            // runs only one instance of form
+            if (!CheckForDuplicate(frm))
+            {
+                frm = new frmSize();
+                frm.MdiParent = this;
+                frm.Show();
+
+            }
+        }
     }
 }
