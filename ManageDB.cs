@@ -393,6 +393,88 @@ namespace Cloth
 
 
 
+        // *****************************  Employee Type Form  Related Queries   *********************************
+        //  Get, Search, Add, Update, Delete
+
+        public DataSet GetEmployeeType()
+        {
+            DataSet dsEmployeeType = new DataSet();
+
+            string query = "SELECT * FROM EmployeeType";
+
+            sqlComObj = new MySqlCommand(query, con); // sql command           
+            sqlDataAdptObj.SelectCommand = sqlComObj;
+            dsEmployeeType.Clear();
+            sqlDataAdptObj.Fill(dsEmployeeType, "AgeGroup"); // fill dataset
+            return dsEmployeeType;
+        }
+        public DataSet SearchEmployeeType(string SearchValue)
+        {
+            DataSet dsAgeGroup = new DataSet();
+
+            string query = "SELECT * FROM EmployeeType ";
+            query += " where EmployeeType Like @SearchValue";
+
+
+            sqlComObj = new MySqlCommand(query, con); // sql command      
+            sqlComObj.Parameters.AddWithValue("@SearchValue", "%" + SearchValue + "%");
+            sqlDataAdptObj.SelectCommand = sqlComObj;
+            dsAgeGroup.Clear();
+            sqlDataAdptObj.Fill(dsAgeGroup, "EmployeeType"); // fill dataset
+
+            return dsAgeGroup;
+        }
+        public int AddEmployeeType(string AgeGroup)
+        {
+            con.Open();
+            // sql command to add size
+            string query = "insert into EmployeeType(EmployeeType)";
+            query += " values(@EmployeeType)";
+            using (sqlComObj = new MySqlCommand(query, con))
+            {
+
+                sqlComObj.Parameters.AddWithValue("@EmployeeType", AgeGroup);
+                sqlComObj.ExecuteNonQuery();
+            }
+            con.Close();
+            //getting the last inserted record, ColorID
+            int lid = Int32.Parse(sqlComObj.LastInsertedId.ToString());
+            return lid;
+        }
+
+        public void UpdateEmployeeType(int AgeGroupID, string AgeGroup)
+        {
+
+            con.Open();
+            string query = "update EmployeeType set EmployeeType=@EmployeeType ";
+            query += "where EmployeeTypeID=@EmployeeTypeID";
+
+            using (sqlComObj = new MySqlCommand(query, con))
+            {
+                // adding parameters
+                sqlComObj.Parameters.AddWithValue("@EmployeeType", AgeGroup);
+                sqlComObj.Parameters.AddWithValue("@EmployeeTypeID", AgeGroupID);
+                sqlComObj.ExecuteNonQuery();
+            }
+            con.Close();
+        }
+
+        public void DeleteEmployeeType(int EmployeeTypeID)
+        {
+            con.Open();
+            string query = "delete from EmployeeType where EmployeeTypeID=@EmployeeTypeID";
+
+
+            using (sqlComObj = new MySqlCommand(query, con))
+            {
+                //adding parameters
+                sqlComObj.Parameters.AddWithValue("@EmployeeTypeID", EmployeeTypeID);
+                sqlComObj.ExecuteNonQuery();
+            }
+            con.Close();
+        }
+
+
 
 
 

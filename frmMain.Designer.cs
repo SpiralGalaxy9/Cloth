@@ -36,6 +36,7 @@
             this.tsBtnColors = new System.Windows.Forms.ToolStripButton();
             this.tsBtnSizes = new System.Windows.Forms.ToolStripButton();
             this.tsBtnAgeGroup = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.tsSideToolbar.SuspendLayout();
             this.SuspendLayout();
@@ -63,10 +64,11 @@
             this.tsBtnManufacturers,
             this.tsBtnColors,
             this.tsBtnSizes,
-            this.tsBtnAgeGroup});
+            this.tsBtnAgeGroup,
+            this.toolStripButton1});
             this.tsSideToolbar.Location = new System.Drawing.Point(0, 24);
             this.tsSideToolbar.Name = "tsSideToolbar";
-            this.tsSideToolbar.Size = new System.Drawing.Size(149, 426);
+            this.tsSideToolbar.Size = new System.Drawing.Size(150, 426);
             this.tsSideToolbar.TabIndex = 2;
             this.tsSideToolbar.Text = "tsTools";
             // 
@@ -77,7 +79,7 @@
             this.tsBtnManufacturers.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnManufacturers.Image")));
             this.tsBtnManufacturers.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBtnManufacturers.Name = "tsBtnManufacturers";
-            this.tsBtnManufacturers.Size = new System.Drawing.Size(146, 27);
+            this.tsBtnManufacturers.Size = new System.Drawing.Size(147, 27);
             this.tsBtnManufacturers.Text = "Manufacturers";
             this.tsBtnManufacturers.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.tsBtnManufacturers.ToolTipText = "manage maufactureers record";
@@ -89,7 +91,7 @@
             this.tsBtnColors.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnColors.Image")));
             this.tsBtnColors.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBtnColors.Name = "tsBtnColors";
-            this.tsBtnColors.Size = new System.Drawing.Size(146, 27);
+            this.tsBtnColors.Size = new System.Drawing.Size(147, 27);
             this.tsBtnColors.Text = "Colors";
             this.tsBtnColors.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.tsBtnColors.Click += new System.EventHandler(this.tsBtnColors_Click);
@@ -100,7 +102,7 @@
             this.tsBtnSizes.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnSizes.Image")));
             this.tsBtnSizes.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBtnSizes.Name = "tsBtnSizes";
-            this.tsBtnSizes.Size = new System.Drawing.Size(146, 27);
+            this.tsBtnSizes.Size = new System.Drawing.Size(147, 27);
             this.tsBtnSizes.Text = "Sizes";
             this.tsBtnSizes.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.tsBtnSizes.Click += new System.EventHandler(this.tsBtnSizes_Click);
@@ -111,10 +113,21 @@
             this.tsBtnAgeGroup.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnAgeGroup.Image")));
             this.tsBtnAgeGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBtnAgeGroup.Name = "tsBtnAgeGroup";
-            this.tsBtnAgeGroup.Size = new System.Drawing.Size(146, 27);
+            this.tsBtnAgeGroup.Size = new System.Drawing.Size(147, 27);
             this.tsBtnAgeGroup.Text = "Age Group";
             this.tsBtnAgeGroup.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.tsBtnAgeGroup.Click += new System.EventHandler(this.tsBtnAgeGroup_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(147, 27);
+            this.toolStripButton1.Text = "Employee Type";
+            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.toolStripButton1.Click += new System.EventHandler(this.tsBtnEmployeeType_Click);
             // 
             // frmMain
             // 
@@ -148,6 +161,7 @@
         private System.Windows.Forms.ToolStripButton tsBtnColors;
         private System.Windows.Forms.ToolStripButton tsBtnSizes;
         private System.Windows.Forms.ToolStripButton tsBtnAgeGroup;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }
 

@@ -8,7 +8,7 @@ namespace Cloth
     {
         // application form
         Form frm = null;
-    
+
         public frmMain()
         {
             InitializeComponent();
@@ -16,7 +16,7 @@ namespace Cloth
         }
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void TsBtnLogin_Click(object sender, EventArgs e)
@@ -27,7 +27,7 @@ namespace Cloth
                 frm = new frmLogin();
                 frm.MdiParent = this;
                 frm.Show();
-               
+
             }
         }
 
@@ -54,7 +54,7 @@ namespace Cloth
             // runs only one instance of form
             if (!CheckForDuplicate(frm))
             {
-                frm  = new frmManufactures();
+                frm = new frmManufactures();
                 frm.MdiParent = frmMain.ActiveForm;
                 frm.Show();
             }
@@ -93,6 +93,16 @@ namespace Cloth
                 frm.MdiParent = this;
                 frm.Show();
 
+            }
+        }
+
+        private void tsBtnEmployeeType_Click(object sender, EventArgs e)
+        {
+            if (!CheckForDuplicate(frm))
+            {
+                frm = new frmEmployeeType();
+                frm.MdiParent = this;
+                frm.Show();
             }
         }
     }
