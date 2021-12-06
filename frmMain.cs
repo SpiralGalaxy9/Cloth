@@ -84,5 +84,16 @@ namespace Cloth
 
             }
         }
+
+        private void tsBtnAgeGroup_Click(object sender, EventArgs e)
+        {
+            if (!CheckForDuplicate(frm))
+            {
+                frm = new frmAgeGroup();
+                frm.MdiParent = this;
+                frm.Show();
+
+            }
+        }
     }
 }

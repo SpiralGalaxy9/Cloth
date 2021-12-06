@@ -35,6 +35,7 @@
             this.tsBtnManufacturers = new System.Windows.Forms.ToolStripButton();
             this.tsBtnColors = new System.Windows.Forms.ToolStripButton();
             this.tsBtnSizes = new System.Windows.Forms.ToolStripButton();
+            this.tsBtnAgeGroup = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.tsSideToolbar.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +62,8 @@
             this.tsSideToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsBtnManufacturers,
             this.tsBtnColors,
-            this.tsBtnSizes});
+            this.tsBtnSizes,
+            this.tsBtnAgeGroup});
             this.tsSideToolbar.Location = new System.Drawing.Point(0, 24);
             this.tsSideToolbar.Name = "tsSideToolbar";
             this.tsSideToolbar.Size = new System.Drawing.Size(149, 426);
@@ -103,6 +105,17 @@
             this.tsBtnSizes.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.tsBtnSizes.Click += new System.EventHandler(this.tsBtnSizes_Click);
             // 
+            // tsBtnAgeGroup
+            // 
+            this.tsBtnAgeGroup.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsBtnAgeGroup.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnAgeGroup.Image")));
+            this.tsBtnAgeGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnAgeGroup.Name = "tsBtnAgeGroup";
+            this.tsBtnAgeGroup.Size = new System.Drawing.Size(146, 27);
+            this.tsBtnAgeGroup.Text = "Age Group";
+            this.tsBtnAgeGroup.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsBtnAgeGroup.Click += new System.EventHandler(this.tsBtnAgeGroup_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -134,6 +147,7 @@
         private System.Windows.Forms.ToolStripButton tsBtnManufacturers;
         private System.Windows.Forms.ToolStripButton tsBtnColors;
         private System.Windows.Forms.ToolStripButton tsBtnSizes;
+        private System.Windows.Forms.ToolStripButton tsBtnAgeGroup;
     }
 }
 

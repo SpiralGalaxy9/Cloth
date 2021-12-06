@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAgeGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgeGroup.Designer.cs">
+      <DependentUpon>frmAgeGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmColor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     <Compile Include="ManageDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAgeGroup.resx">
+      <DependentUpon>frmAgeGroup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmColor.resx">
       <DependentUpon>frmColor.cs</DependentUpon>
     </EmbeddedResource>

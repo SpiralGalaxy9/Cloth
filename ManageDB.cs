@@ -305,6 +305,97 @@ namespace Cloth
             con.Close();
         }
 
+
+
+
+        // *****************************  Age Group Form  Related Queries   *********************************
+        //  Get, Search, Add, Update, Delete
+
+        public DataSet GetAgeGroup()
+        {
+            DataSet dsAgeGroup = new DataSet();
+
+            string query = "SELECT * FROM AgeGroup";
+
+            sqlComObj = new MySqlCommand(query, con); // sql command           
+            sqlDataAdptObj.SelectCommand = sqlComObj;
+            dsAgeGroup.Clear();
+            sqlDataAdptObj.Fill(dsAgeGroup, "AgeGroup"); // fill dataset
+            return dsAgeGroup;
+        }
+        public DataSet SearchAgeGroup(string SearchValue)
+        {
+            DataSet dsAgeGroup = new DataSet();
+
+            string query = "SELECT * FROM AgeGroup ";
+            query += " where AgeGroup Like @SearchValue";
+
+
+            sqlComObj = new MySqlCommand(query, con); // sql command      
+            sqlComObj.Parameters.AddWithValue("@SearchValue", "%" + SearchValue + "%");
+            sqlDataAdptObj.SelectCommand = sqlComObj;
+            dsAgeGroup.Clear();
+            sqlDataAdptObj.Fill(dsAgeGroup, "AgeGroup"); // fill dataset
+
+            return dsAgeGroup;
+        }
+        public int AddAgeGroup(string AgeGroup)
+        {
+            con.Open();
+            // sql command to add size
+            string query = "insert into AgeGroup(AgeGroup)";
+            query += " values(@AgeGroup)";
+            using (sqlComObj = new MySqlCommand(query, con))
+            {
+
+                sqlComObj.Parameters.AddWithValue("@AgeGroup", AgeGroup);
+                sqlComObj.ExecuteNonQuery();
+            }
+            con.Close();
+            //getting the last inserted record, ColorID
+            int lid = Int32.Parse(sqlComObj.LastInsertedId.ToString());
+            return lid;
+        }
+
+        public void UpdateAgeGroup(int AgeGroupID, string AgeGroup)
+        {
+
+            con.Open();
+            string query = "update AgeGroup set AgeGroup=@AgeGroup ";
+            query += "where AgeGroupID=@AgeGroupID";
+
+            using (sqlComObj = new MySqlCommand(query, con))
+            {
+                // adding parameters
+                sqlComObj.Parameters.AddWithValue("@AgeGroup", AgeGroup);
+                sqlComObj.Parameters.AddWithValue("@AgeGroupID", AgeGroupID);
+                sqlComObj.ExecuteNonQuery();
+            }
+            con.Close();
+        }
+
+        public void DeleteAgeGroup(int AgeGroupID)
+        {
+            con.Open();
+            string query = "delete from AgeGroup where AgeGroupID=@AgeGroupID";
+
+
+            using (sqlComObj = new MySqlCommand(query, con))
+            {
+                //adding parameters
+                sqlComObj.Parameters.AddWithValue("@AgeGroupID", AgeGroupID);
+                sqlComObj.ExecuteNonQuery();
+            }
+            con.Close();
+        }
+
+
+
+
+
+
+
+
         // *****************************  SOME CODES FOR EASY REFERENCES *********************************
 
         /*
